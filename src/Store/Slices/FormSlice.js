@@ -55,6 +55,7 @@ const formSlice = createSlice({
       state.extra = 0;
       state.totalPrice = 0;
       state.dropdownCheck = true;
+      state.person = { name: "", surname: "", number: "" };
     },
   },
 });

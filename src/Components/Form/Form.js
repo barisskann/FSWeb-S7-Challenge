@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "./HomePage/Header";
-import Dropdown from "./Form/DropDown";
-import Radio from "./Form/İnputRadio";
-import CheckBox from "./Form/inputCheckbox";
-import Switch from "./Form/İnputSwitch";
-import AddExtra from "./Form/Addİnput";
+
+import Dropdown from "./DropDown";
+import Radio from "./İnputRadio";
+import CheckBox from "./inputCheckbox";
+import Switch from "./İnputSwitch";
+import AddExtra from "./Addİnput";
 import { useSelector } from "react-redux";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
@@ -17,7 +17,6 @@ export default function Form(params) {
   console.log(data);
   return (
     <div className="">
-      <Header />
       <div className="form mt-4">
         <div className="">
           <div className=" d-flex flex-column justify-content-center align-items-center  ">
@@ -27,7 +26,7 @@ export default function Form(params) {
           </div>
         </div>
 
-        <div className="d-flex  mt-4 justify-content-between ">
+        <div className="d-flex  mt-4 justify-content-between flex-wrap ">
           <div className="checkbox">
             <h3 className="mb-2 title">What do you want extra</h3>
             <CheckBox className="" />

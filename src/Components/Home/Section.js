@@ -7,7 +7,6 @@ function Section(params) {
     return (
       <div key={sayac} className="my-4">
         <Link to={item.name}>
-          {" "}
           <Button className="btnn">
             <div className="list-item  flex-wrap text-center  ">
               <div className="img-item">

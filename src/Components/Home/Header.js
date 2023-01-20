@@ -16,21 +16,21 @@ function Example(args) {
   return (
     <div>
       <Navbar {...args} className="text-light" fixed="top" color="dark">
-        <div className="d-flex  justify-content-around align-items-center w-100  m-3 fw-4 ">
-          <div className="d-flex align-items-center flex-grow-1 justify-content-center gap-3">
+        <div className=" d-flex  justify-content-around align-items-center w-100  m-4 fw-4 flex-wrap ">
+          <div className="  d-flex align-items-center flex-grow-1 justify-content-center gap-3">
             <Link to="/" className="d-flex gap-2 text-center">
-              <div onClick={handleClick}>
+              <div onClick={handleClick} className="">
                 <MdFastfood className=" text-danger" />
                 Home
               </div>
             </Link>
           </div>
-          <p className="text-warning">THİS YOURS QUALİTY</p>
-          <div className="d-flex justify-content-end gap-4 align-items-start flex-grow-1 ">
+          <p className="  text-warning">THİS YOURS QUALİTY</p>
+          <div className="d-flex justify-content-end gap-4 align-items-start flex-grow-1   ">
             <Link to="/about" className="">
               ABOUT
             </Link>
-            <Link to="/content" className="">
+            <Link to="/content" className=" ">
               CONTENT
             </Link>
           </div>
@@ -38,15 +38,15 @@ function Example(args) {
       </Navbar>
       <div className="header-img">
         <div className="header-btn">
-          <Link to="/form">
-            <Button
-              outline={false}
-              className="px-5 py-2 fw-bold fw-light border-0 text-opacity-75  text-dark"
-              color="warning"
-            >
-              Fast Ordered
-            </Button>
-          </Link>
+          <Button
+            outline={false}
+            className="px-5 py-2 fw-bold fw-light border-0 text-opacity-75   text-dark test-order"
+            color="warning"
+          >
+            <Link className="fast-order" to="/form">
+              <p className="text-dark">Fast Ordered</p>
+            </Link>
+          </Button>
         </div>
       </div>
     </div>

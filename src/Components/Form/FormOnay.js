@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { checkList } from "../../Css/data";
 import PersonData from "./PersonData";
-import Headers from "./../HomePage/Header";
+import Headers from "../Home/Header";
 import schema from "../../Schema/Schema";
 import { useSelector } from "react-redux";
 import { Button } from "reactstrap";
 import axios from "axios";
+import Footer from "../Footer/Footer";
 export default function FormOnay(params) {
   const { person, data, totalPrice } = useSelector(
     ({ form: { person, data, totalPrice } }) => {
@@ -14,7 +15,7 @@ export default function FormOnay(params) {
   );
   const handleClick = () => {
     axios
-      .post("https://reqres.in/api/users", {data,person})
+      .post("https://reqres.in/api/users", { data, person })
       .then((err) => console.log(err));
   };
   const [buton, setButon] = useState(false);
@@ -85,6 +86,7 @@ export default function FormOnay(params) {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

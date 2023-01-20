@@ -4,7 +4,7 @@ import "./Css/Header.css";
 import "./Css/Section.css";
 import HomePage from "./Components/HomePage";
 import { Route, Switch } from "react-router-dom";
-import Form from "./Components/Form";
+import FormPage from "./Components/FormPage";
 import FormOnay from "./Components/Form/FormOnay";
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
           <HomePage />
         </Route>
         <Route exact path="/form">
-          <Form />
+          <FormPage />
         </Route>
         <Route path="/form/onay">
           <FormOnay />
