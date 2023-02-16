@@ -4,7 +4,7 @@ import { personData } from "../../Store";
 import * as yup from "yup";
 import schema from "../../Schema/Schema";
 import { checkValidate } from "../../Store";
-export default function example(params) {
+export default function Example(params) {
   const { person, eror } = useSelector(({ form: { person, eror } }) => {
     return { person, eror };
   });

@@ -4,10 +4,9 @@ const formSlice = createSlice({
   name: "form",
   initialState: {
     data: { extra: "", dropdown: "", radio: "", swich: false },
-    aray: [],
-    sayac: 0,
     size: 0,
     extra: 0,
+    aray: [],
     totalPrice: 0,
     eror: { name: "", surname: "", number: "" },
     person: { name: "", surname: "", number: "" },
@@ -57,6 +56,12 @@ const formSlice = createSlice({
       state.dropdownCheck = true;
       state.person = { name: "", surname: "", number: "" };
     },
+    handleRemove(state, action) {
+      state.aray = action.payload;
+    },
+    changeExtra(state, action) {
+      state.extra = state.extra - 1;
+    },
   },
 });
 
@@ -70,4 +75,6 @@ export const {
   checkValidate,
   dropdownchck,
   dataReset,
+  handleRemove,
+  changeExtra
 } = formSlice.actions;

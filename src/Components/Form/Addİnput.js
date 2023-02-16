@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeData } from "../../Store";
-export default function name(params) {
+export default function Name(params) {
   const { data } = useSelector(({ form: { data } }) => {
     return { data };
   });

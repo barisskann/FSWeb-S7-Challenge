@@ -4,13 +4,13 @@ import { Form, FormGroup, Label, Input } from "reactstrap";
 import { changeData } from "../../Store";
 
 function Example(props) {
-  const { data} = useSelector(({form:{data}}) => {
-    return {data}
-  })
+  const { data } = useSelector(({ form: { data } }) => {
+    return { data };
+  });
   const dispatch = useDispatch();
   const handleChange = (e) => {
     const { name, checked } = e.target;
-    dispatch(changeData({ name, checked }))
+    dispatch(changeData({ name, checked }));
   };
 
   return (
@@ -23,7 +23,7 @@ function Example(props) {
           role="switch"
           checked={data.swich}
         />
-        <Label check>{ }</Label>
+        <Label check>{}</Label>
       </FormGroup>
     </Form>
   );

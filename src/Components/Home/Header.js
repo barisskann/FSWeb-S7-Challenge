@@ -40,10 +40,10 @@ function Example(args) {
         <div className="header-btn">
           <Button
             outline={false}
-            className="px-5 py-2 fw-bold fw-light border-0 text-opacity-75   text-dark test-order"
+            className="px-5 py-2 fw-bold fw-light border-0 text-opacity-75 text-dark test-order"
             color="warning"
           >
-            <Link className="fast-order" to="/form">
+            <Link className="fast-order" to="/form" data-cy="test">
               <p className="text-dark">Fast Ordered</p>
             </Link>
           </Button>

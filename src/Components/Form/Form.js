@@ -1,20 +1,18 @@
 import React from "react";
-
 import Dropdown from "./DropDown";
 import Radio from "./İnputRadio";
 import CheckBox from "./inputCheckbox";
 import Switch from "./İnputSwitch";
 import AddExtra from "./Addİnput";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "reactstrap";
 import { Link } from "react-router-dom";
 export default function Form(params) {
-  const { dropdownCheck, data } = useSelector(
-    ({ form: { dropdownCheck, data } }) => {
-      return { dropdownCheck, data };
-    }
-  );
-  console.log(data);
+  const dispatch = useDispatch();
+  const { dropdownCheck } = useSelector(({ form: { dropdownCheck } }) => {
+    return { dropdownCheck };
+  });
+ 
   return (
     <div className="">
       <div className="form mt-4">
@@ -43,7 +41,10 @@ export default function Form(params) {
           </div>
         </div>
         <div>
-          <Button disabled={dropdownCheck} className="w-100 mt-3">
+          <Button
+            disabled={dropdownCheck}
+            className="w-100 mt-3"
+          >
             <Link to="/form/onay">
               <p>Order</p>
             </Link>

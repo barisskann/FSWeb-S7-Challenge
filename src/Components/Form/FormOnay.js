@@ -1,37 +1,60 @@
 import React, { useEffect, useState } from "react";
+import { TiDelete } from "react-icons/ti";
 import { checkList } from "../../Css/data";
 import PersonData from "./PersonData";
 import Headers from "../Home/Header";
 import schema from "../../Schema/Schema";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "reactstrap";
 import axios from "axios";
 import Footer from "../Footer/Footer";
+import { changeExtra, totalValue } from "../../Store";
 export default function FormOnay(params) {
-  const { person, data, totalPrice } = useSelector(
-    ({ form: { person, data, totalPrice } }) => {
-      return { person, data, totalPrice };
+  const dispatch = useDispatch();
+  let { person, data, totalPrice } = useSelector(
+    ({ form: { person, data, totalPrice} }) => {
+      return { person, data, totalPrice};
     }
   );
+  const handleRemove = (e, item) => {
+    setVeri(
+      veri.filter((data) => {
+        if (data.name === item.name) {
+          data.check = false;
+        }
+        return item.name !== data.name;
+      })
+    );
+    dispatch(changeExtra());
+    dispatch(totalValue());
+  };
   const handleClick = () => {
     axios
       .post("https://reqres.in/api/users", { data, person })
       .then((err) => console.log(err));
   };
   const [buton, setButon] = useState(false);
+
   useEffect(() => {
     schema.isValid(person).then((res) => setButon(!res));
   }, [person]);
-  const render = checkList.filter((item) => {
-    return item.check === true;
-  });
-  const total = render.map((item) => {
+
+  const render = checkList.filter((item) => item.check === true);
+  const [veri, setVeri] = useState(render);
+  const total = veri.map((item) => {
     return (
-      <div className="text mt-1" key={item.name}>
-        {item.name}
+      <div className="text mt-1 d-flex justify-content-between" key={item.name}>
+        <p className="">{item.name}</p>
+        <p>
+          <TiDelete
+            onClick={(e) => handleRemove(e, item)}
+            className="text-danger fs-4 align-self-end"
+          />
+        </p>
       </div>
     );
   });
+
   const { extra, dropdown, swich, radio } = data;
   return (
     <div>
@@ -63,21 +86,23 @@ export default function FormOnay(params) {
               <span className="title">SAUCE:</span>
               <span className="text">{radio}</span>
             </p>
-            <p className="my-3 title">
+            <p className="my-3 title w-50 m-auto">
               <span className="title">EXTRA</span>
               {total}
             </p>
             <p className="my-3 title">
               {swich ? "With Serving" : "Without Serving"}
             </p>
-            <p className="my-3 text-warning ">{extra}</p>
+            <p className="my-3 text-warning  ">{extra}</p>
           </div>
           <p>
             <span className="title">Price</span>: {totalPrice}$
           </p>
           <div>
             <Button
-              onClick={handleClick}
+              onClick={() => {
+                handleClick();
+              }}
               disabled={buton}
               className="w-100 mt-1"
             >
@@ -86,7 +111,7 @@ export default function FormOnay(params) {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

@@ -7,7 +7,9 @@ import {
   personData,
   checkValidate,
   dropdownchck,
-  dataReset
+  dataReset,
+  handleRemove,
+  changeExtra,
 } from "./Slices/FormSlice";
 const store = configureStore({
   reducer: {
@@ -22,5 +24,7 @@ export {
   changeSize,
   personData,
   dropdownchck,
-  dataReset
+  dataReset,
+  handleRemove,
+  changeExtra,
 };

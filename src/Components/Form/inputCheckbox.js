@@ -1,26 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import { checkList } from "../../Css/data";
-import { useDispatch } from "react-redux";
-import { changeData, totalValue } from "../../Store";
+import { useDispatch, useSelector } from "react-redux";
+import { changeData, handleRemove, totalValue } from "../../Store";
 export default function CheckBox(params) {
-  const [deger, setDeger] = useState(false);
+  const { aray } = useSelector(({ form: { aray } }) => {
+    return { aray };
+  });
+  console.log(aray);
   const dispatch = useDispatch();
   const handleChange = (e, item) => {
     const { checked, name, type } = e.target;
     dispatch(changeData({ name, type, checked }));
     dispatch(totalValue());
-    setDeger(!deger);
-    item.check === true ? (item.check = false) : (item.check = true);
+    if (checked) {
+      item.check = true;
+    } else {
+      item.check = false;
+    }
   };
   const render = checkList.map((item, sayac) => {
     return (
       <div key={sayac} className="  ">
         <input
           id={item.name}
+          checked={item.check}
           name={item.name}
           type="checkbox"
           className="mb-1"
-          checked={item.check}
           onChange={(e) => {
             handleChange(e, item);
           }}
